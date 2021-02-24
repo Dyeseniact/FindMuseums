@@ -1,10 +1,12 @@
-class Mascota{
-	constructor(nombre, categoria, fotos, descripcion, anunciante, ubicacion){
-		this.nombre = nombre;
-		this.categoria = categoria;
-		this.fotos = fotos; 
-		this.descripcion = descripcion;
-		this.anunciante = anunciante; 
-		this.ubicacion = ubicacion; 
-	}	
+class Musseum {
+	cosntructor(name, addres, phoneNumber, schedule, id, email, cost) {
+		this.name = name;
+		this.addres = addres;
+		this.phoneNumber = phoneNumber;
+		this.schedule = schedule;
+		this.id = id;
+		this.email = email;
+		this.cost = cost;
+	}
+	
 }
