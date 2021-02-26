@@ -1,5 +1,5 @@
 class Museum {
-	cosntructor(name, address, phoneNumber, schedule, idMuseum, email) {
+	constructor(name, address, phoneNumber, schedule, idMuseum, email) {
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;

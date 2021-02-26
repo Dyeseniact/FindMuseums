@@ -3,9 +3,9 @@ Reservaciones para museos
 
 ## Preguntas 
 ### ¿Qué espero que haga el proyecto?
-Por la pandemia de COVID-19 los museos deben admitir a un limite de personas por recorrido, es por esto que este proyecto se enfoca en facilitar 
+Por la pandemia de COVID-19 los museos deben admitir a un límite de personas por recorrido, es por esto que este proyecto se enfoca en facilitar 
 a los museos el control de las personas que ingresan a sus instalaciones por medio de reservaciones, de este modo el visitante puede reservar su recorrido 
-dependiendo del horario y limite de personas establecido por el museo. 
+dependiendo del horario y límite de personas establecido por el museo. 
 ### ¿Qué tipo de usuario tendrá nuestro sistema?
 Personas que quieran reservar un recorrido en un museo, y museos que quieran tener un control sobre sus visitantes para no exceder el número de personas.
 Los definimos como Visitante y Museo.
@@ -14,7 +14,7 @@ Los definimos como Visitante y Museo.
 - Hacer reservación
 - Editar reservación
 - Cancelar reservación
-- Ver información del museo (horarios y numero de personas)
+- Ver información del museo (horarios y número de personas)
 - Ver su ticket de reservación
 
 #### Museo
@@ -22,7 +22,7 @@ Los definimos como Visitante y Museo.
 - Editar reservaciones
 - Cancelar reservaciones
 - Obtener reservaciones
-- Obtener listado de viistantes
+- Obtener listado de visitantes
 - Establecer límite de visitantes 
 - Establecer horarios de recorridos
 
@@ -75,7 +75,7 @@ Los definimos como Visitante y Museo.
 - Hacer reservación
 - Editar reservación
 - Cancelar reservación
-- Ver información del museo (horarios y numero de personas)
+- Ver información del museo (horarios y número de personas)
 - Ver su ticket de reservación
 
 #### Museo
@@ -100,9 +100,136 @@ Los definimos como Visitante y Museo.
 - Eliminar 
 
 ## Clases de JavaScript
+```javascript
+class Museum {
+	constructor(name, address, phoneNumber, schedule, idMuseum, email) {
+		this.name = name;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.schedule = schedule;
+		this.idMuseum = idMuseum;
+		this.email = email;
+		
+	}
 
+	makeReservation() {
+
+	}
+
+	editReservation() {
+
+	}
+
+	cancelReservation() {
+
+	}
+
+	viewReservation() {
+
+	}
+
+	viewVisitors() {
+
+	}
+	
+}
+
+class Visitor{
+	constructor(name, idVisitor, status, email, password, address, phone, idService) {
+		this.name = name;
+		this.idVisitor = idVisitor;
+		this.status = status;
+		this.email = email;
+		this.password = password;
+		this.address = address;
+		this.phone = phone;
+		
+	}
+
+	makeReservation() {
+
+	}
+
+	editReservation() {
+
+	}
+
+	cancelReservation() {
+
+	}
+
+	viewReservation() {
+
+	}
+
+	viewMuseums() {
+
+	}
+
+}
+
+class Service{
+	constructor(idService, description,date, time, price, limitVisitors, ) {
+		this.idService = idService;
+		this.description = description;
+		this.date = date;
+		this.time = time;
+		this.price = price;
+		this.limitVisitors = limitVisitors;
+		
+	}
+
+	createService() {
+
+	}
+
+	editService() {
+
+	}
+
+	deleteService() {
+
+	}
+
+	getService() {
+
+	}
+
+	
+
+}
+
+class Ticket{
+	constructor(idTicket, idVisitor, idService, idMuseum, price, date, time) {
+		this.idTicket = idTicket;
+		this.idVisitor = idVisitor;
+		this.idService = idService;
+		this.idMuseum = idMuseum;
+		this.price = price;
+		this.date = date;
+		this.time = time;
+		
+	}
+
+	createTicket() {
+
+	}
+
+	editTicket() {
+
+	}
+	
+	getTicket() {
+
+	}
+
+	deleteTicket() {
+
+	}
+}
+```
 ## Integrantes
-Equipo numero 20
+Equipo número 20
 
 - Jorge Ivan Gutierrez Yañez
 - Diana Yesenia Campos Tenorio
