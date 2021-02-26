@@ -143,7 +143,7 @@ class Museum {
 }
 
 class Visitor{
-	constructor(name, idVisitor, status, email, password, address, phone, idService) {
+	constructor(name, idVisitor, status, email, password, address, phone) {
 		this.name = name;
 		this.idVisitor = idVisitor;
 		this.status = status;
@@ -151,7 +151,7 @@ class Visitor{
 		this.password = password;
 		this.address = address;
 		this.phone = phone;
-		this.idService = idService;
+	
 		
 	}
 
