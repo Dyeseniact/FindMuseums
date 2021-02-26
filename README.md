@@ -131,6 +131,14 @@ class Museum {
 	viewVisitors() {
 
 	}
+
+	setSchedule() {
+
+	}
+
+	setLimitVisitors() {
+
+	}
 	
 }
 
@@ -143,6 +151,7 @@ class Visitor{
 		this.password = password;
 		this.address = address;
 		this.phone = phone;
+		this.idService = idService;
 		
 	}
 
