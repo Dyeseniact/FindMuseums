@@ -1,12 +1,32 @@
-class Musseum {
-	cosntructor(name, addres, phoneNumber, schedule, id, email, cost) {
+class Museum {
+	cosntructor(name, address, phoneNumber, schedule, idMuseum, email) {
 		this.name = name;
-		this.addres = addres;
+		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.schedule = schedule;
-		this.id = id;
+		this.idMuseum = idMuseum;
 		this.email = email;
-		this.cost = cost;
+		
+	}
+
+	makeReservation() {
+
+	}
+
+	editReservation() {
+
+	}
+
+	cancelReservation() {
+
+	}
+
+	viewReservation() {
+
+	}
+
+	viewVisitors() {
+
 	}
 	
 }
@@ -20,7 +40,7 @@ class Visitor{
 		this.password = password;
 		this.address = address;
 		this.phone = phone;
-		this.idService = idService;
+		
 	}
 
 	makeReservation() {
@@ -42,5 +62,36 @@ class Visitor{
 	viewMuseums() {
 
 	}
+
+}
+
+class Service{
+	constructor(idService, description,date, time, price, limitVisitors, ) {
+		this.idService = idService;
+		this.description = description;
+		this.date = date;
+		this.time = time;
+		this.price = price;
+		this.limitVisitors = limitVisitors;
+		
+	}
+
+	createService() {
+
+	}
+
+	editService() {
+
+	}
+
+	deleteService() {
+
+	}
+
+	getService() {
+
+	}
+
+	
 
 }
