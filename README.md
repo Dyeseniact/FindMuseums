@@ -83,7 +83,7 @@ Los definimos como Visitante y Museo.
 - Editar reservaciones
 - Cancelar reservaciones
 - Obtener reservaciones
-- Obtener listado de viistantes
+- Obtener listado de visistantes
 - Establecer límite de visitantes 
 - Establecer horarios de recorridos
 
