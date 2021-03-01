@@ -1,7 +1,7 @@
 const Visitor = require('../models/Visitor')
 
 
-function makeVisitor(req, res) {
+function createVisitor(req, res) {
     var visitor = new Visitor(req.body)
     res.status(201).send(visitor)
 }
@@ -20,7 +20,7 @@ function deleteVisitor(req, res) {
     res.status(200).send(`Visitor con el id: ${req.params.id} fue eliminado`);
 }
 
-function viewVisitor(req, res) {
+function getVisitor(req, res) {
     let visitor1 = new Visitor(1, "Juan", "0", "juanito@gmail.com", "Estado de Mexico","556987452");
     let visitor2 = new Visitor(2, "Ana", "1", "anita@gmail.com", "CDMX","558585969");
     let visitor3 = new Visitor(3, "Yesenia", "1", "yesenia@gmail.com", "Tabasco","5575826945");
@@ -31,8 +31,8 @@ function viewVisitor(req, res) {
 
 // exportamos las funciones definidas
 module.exports = {
-    makeVisitor,
+    createVisitor,
     editVisitor,
     deleteVisitor,
-    viewVisitor
+    getVisitor
   }
