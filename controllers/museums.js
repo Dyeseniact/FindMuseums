@@ -21,7 +21,7 @@ function getMuseums(req, res) {
 
 function editMuseum(req, res) {
   // simulando un museum previamente existente que el cliente modifica
-  var museum1 = new Museum(req.params.id, 'Juan', 'Vega', 'juan@vega.com')
+  var museum1 = new Museum(req.params.id,'Moneda', 'Peralvillo No. 24', 5547512454, '10:00', 'monedamuseo@gmail.com')
   var modificaciones = req.body
   museum1 = { ...museum1, ...modificaciones }
   res.send(museum1)
