@@ -11,6 +11,8 @@ router.get('/', (req, res)=>{
 router.use('/usuarios', require('./usuarios'));
 router.use('/mascotas', require('./mascotas'));
 router.use('/visitor', require('./visitor'));
+router.use('/museums', require('./museums'));
+
 
 /* con el método use de nuestro router estamos indicando 
 * que en la ruta 'v1/usuarios' estarán anidadas las rutas 
