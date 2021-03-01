@@ -1,14 +1,14 @@
 const router = require('express').Router();
 
 const {
-    makeVisitor,
+    createVisitor,
     editVisitor,
     deleteVisitor,
-    viewVisitor
+    getVisitor
 } = require('../controllers/visitor')
 
-router.get('/', viewVisitor)
-router.post('/', makeVisitor)
+router.get('/', getVisitor)
+router.post('/', createVisitor)
 router.put('/:id', editVisitor)
 router.delete('/:id', deleteVisitor)
 
