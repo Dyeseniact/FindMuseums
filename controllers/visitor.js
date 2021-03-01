@@ -8,7 +8,7 @@ function makeVisitor(req, res) {
 
 function editVisitor(req, res) {
     
-    let visitor1 = new Visitor(req.params.id, "holeon");
+    let visitor1 = new Visitor(req.params.id, "ejemplo");
     var edits = req.body
     visitor1 = { ...visitor1, ...edits }
     res.send(visitor1)
@@ -21,9 +21,9 @@ function deleteVisitor(req, res) {
 }
 
 function viewVisitor(req, res) {
-    let visitor1 = new Visitor(1, "Juan");
-    let visitor2 = new Visitor(2, "Ana");
-    let visitor3 = new Visitor(3, "Yesenia");
+    let visitor1 = new Visitor(1, "Juan", "0", "juanito@gmail.com", "Estado de Mexico","556987452");
+    let visitor2 = new Visitor(2, "Ana", "1", "anita@gmail.com", "CDMX","558585969");
+    let visitor3 = new Visitor(3, "Yesenia", "1", "yesenia@gmail.com", "Tabasco","5575826945");
     res.send([visitor1, visitor2, visitor3])
 
 }
