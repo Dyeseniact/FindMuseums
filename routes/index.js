@@ -5,11 +5,10 @@
 var router = require('express').Router();
 
 router.get('/', (req, res)=>{
-  res.send('welcome to adoptapet api');
+  res.send('Reservaciones');
 })
 
-router.use('/usuarios', require('./usuarios'));
-router.use('/mascotas', require('./mascotas'));
+
 router.use('/visitor', require('./visitor'));
 router.use('/museums', require('./museums'));
 
