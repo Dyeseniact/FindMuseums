@@ -8,7 +8,22 @@ class Museum {
 		this.email = email;
 		
 	}
+	createMuseum() {
+		 
+	}
 
+	getMuseums() {
+
+	}
+
+  	editMuseum() {
+
+	}
+
+  	deleteMuseum() {
+
+	}
+	
 	makeReservation() {
 
 	}
