@@ -10,7 +10,7 @@ const db = new sequelize.Sequelize(process.env.TABLE, process.env.USER, process.
 
 
 db.authenticate()
-  .then(() => {
+  .then(() => { 
     console.log('DB Conectada');
   })
   .catch(err => {
