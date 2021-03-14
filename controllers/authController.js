@@ -38,7 +38,7 @@ exports.authenticateUser = async (req, res) => {
 
         if (!user) {
             return res.status(400).json({
-                msg: "El usuario noexiste"
+                msg: "El usuario no existe"
             });
         }
 

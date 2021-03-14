@@ -33,7 +33,7 @@ const getUserByID = async (req, res) => {
     if (user) {
         res.json(user)
     } else {
-        res.status(404).json({
+        res.status(400).json({
             msg: `No existe un usuario con el id: ${id}`
         })
     }
@@ -81,16 +81,17 @@ const postUser = async (req, res) => {
             }, (error, token) => {
                 if (error) throw error;
 
-                res.json({
+                res.status(201).json({
                     user,
                     token
                 });
             });
+            
         }
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: `Favor de comunicarse con el administrador`
+            msg: `Error, favor de comunicarse con el administrador`
         });
     }
 }
@@ -109,7 +110,7 @@ const putUser = async (req, res) => {
 
         const user = await User.default.findByPk(id);
         if (!user) {
-            return res.status(404).json({
+            return res.status(400).json({
                 msg: 'No existe un usuario con el id: ' + id
             })
         }
@@ -120,7 +121,7 @@ const putUser = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: `Favor de comunicarse con el administrador`
+            msg: `Error, favor de comunicarse con el administrador`
         })
     }
 }
@@ -134,7 +135,7 @@ const deleteUser = async (req, res) => {
 
         const user = await User.default.findByPk(id);
         if (!user) {
-            return res.status(404).json({
+            return res.status(400).json({
                 msg: 'No existe un usuario con el id: ' + id
             })
         }
@@ -147,7 +148,7 @@ const deleteUser = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: `Favor de comunicarse con el administrador`
+            msg: `Error, favor de comunicarse con el administrador`
         })
     }
 }

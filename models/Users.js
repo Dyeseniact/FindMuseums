@@ -8,7 +8,7 @@ const User = conection_1.default.define('user', {
         type: sequelize_1.DataTypes.STRING
     },
     email: {
-        type: sequelize_1.DataTypes.STRING
+        type: sequelize_1.DataTypes.STRING,
     },
     address: {
         type: sequelize_1.DataTypes.STRING

@@ -18,7 +18,7 @@ module.exports = function (req, res, next) {
         next();
 
     } catch (error) {
-        res.status(401).json({
+        res.status(400).json({
             msg: 'Token no valido'
         });
         console.log(error)

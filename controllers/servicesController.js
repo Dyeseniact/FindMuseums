@@ -33,7 +33,7 @@ console.log(service.length);
   if (service.length > 0) {
       res.json(service)
   } else {
-      res.status(404).json({
+      res.status(400).json({
           msg: `No existe un servicio con el id: ${id}`
       })
   }
@@ -52,7 +52,7 @@ const postService = async (req, res) => {
 
   try {
     if(description == undefined){
-      return res.status(401).json({msg: 'La descripción no puede ir vacía'});
+      return res.status(400).json({msg: 'La descripción no puede ir vacía'});
     }
       var service = await Service.default.findOne({
           where: {
@@ -67,11 +67,11 @@ const postService = async (req, res) => {
       } else {
         
         
-          // Guardar usuario
+          // Guardar servicio
            service = await Service.default.create(body);
           
 
-              res.json({
+              res.status(201).json({
                   service
                   
               });
@@ -80,7 +80,7 @@ const postService = async (req, res) => {
   } catch (error) {
       console.log(error);
       res.status(500).json({
-          msg: `Favor de comunicarse con el administrador`
+          msg: `Error, favor de comunicarse con el administrador`
       });
   }
 }
@@ -99,7 +99,7 @@ const putService = async (req, res) => {
 
       const service = await Service.default.findByPk(id);
       if (!service) {
-          return res.status(404).json({
+          return res.status(400).json({
               msg: 'No existe un service con el id: ' + id
           })
       }
@@ -124,7 +124,7 @@ const deleteService = async (req, res) => {
 
       var service = await Service.default.findByPk(id);
       if (!service) {
-          return res.status(404).json({
+          return res.status(400).json({
               msg: 'No existe un service con el id: ' + id
           })
       }
