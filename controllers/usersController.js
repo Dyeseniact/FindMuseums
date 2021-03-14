@@ -53,12 +53,12 @@ const postUser = async (req, res) => {
 
     try {
 
-        const project = await User.default.findOne({
+        var user = await User.default.findOne({
             where: {
                 email: email
             }
         });
-        if (project) {
+        if (user) {
             return res.status(400).json({
                 msg: 'El usuario ya existe'
             });
@@ -68,7 +68,7 @@ const postUser = async (req, res) => {
             const salt = await bcryptjs.genSalt(10);
             body.password = await bcryptjs.hash(password, salt);
             // Guardar usuario
-            const user = await User.default.create(body);
+             user = await User.default.create(body);
             // Crear y firmar el JWT
             const payload = {
                 user: {
@@ -90,7 +90,7 @@ const postUser = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: `Favor de comunicarse con el arministrador`
+            msg: `Favor de comunicarse con el administrador`
         });
     }
 }
@@ -120,7 +120,7 @@ const putUser = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: `Favor de comunicarse con el arministrador`
+            msg: `Favor de comunicarse con el administrador`
         })
     }
 }
@@ -147,7 +147,7 @@ const deleteUser = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: `Favor de comunicarse con el arministrador`
+            msg: `Favor de comunicarse con el administrador`
         })
     }
 }

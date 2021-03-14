@@ -1,14 +1,49 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
 const {
-    createService,
-    getService,
-    updateService,
-    deleteService
-} = require('../controllers/services')
+    check
+} = require('express-validator');
 
-router.get('/', getService)
-router.post('/', createService)
-router.put('/:id', updateService)
-router.delete('/:id', deleteService)
+
+const {
+    
+    getService,
+    getServiceByID,
+    postService,
+    putService,
+    deleteService
+} = require('../controllers/servicesController');
+
+
+router.get('/',
+    getService
+
+)
+
+
+router.get('/:id',
+    getServiceByID
+);
+
+
+router.post('/',
+    [
+        check('description', 'La description es oblgatoria').not().isEmpty(),
+        
+    ],
+    postService
+);
+
+router.put('/:id',
+    [
+        check('description', 'La description es oblgatoria').not().isEmpty(),
+    ],
+    putService
+);
+
+router.delete('/:id',
+    deleteService
+);
+
 
 module.exports = router;
