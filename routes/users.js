@@ -6,21 +6,21 @@ const {
 
 
 const {
-    deleteUsuario,
-    getUsuario,
-    getUsuarios,
-    postUsuario,
-    putUsuario
+    deleteUser,
+    getUser,
+    getUser,
+    postUser,
+    putUser
 } = require('../controllers/usersController');
 
 
-router.get('/',    
-    getUsuarios
+router.get('/',
+    getUser
 )
 
 
 router.get('/:id',
-    getUsuario
+    getUser
 );
 router.post('/',
     [
@@ -31,7 +31,7 @@ router.post('/',
             min: 6
         })
     ],
-    postUsuario
+    postUser
 );
 
 router.put('/:id',
@@ -40,11 +40,11 @@ router.put('/:id',
             min: 6
         })
     ],
-    putUsuario
+    putUser
 );
 
 router.delete('/:id',
-    deleteUsuario
+    deleteUser
 );
 
 

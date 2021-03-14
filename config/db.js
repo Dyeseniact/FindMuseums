@@ -1,22 +1,21 @@
-
 require('dotenv').config({
-    path: 'variables.env'
+  path: 'variables.env'
 });
+
 const sequelize = require("sequelize");
 const db = new sequelize.Sequelize(process.env.TABLE, process.env.USER, process.env.PASSWORD, {
-    host: 'localhost',
-    dialect: 'mysql',
-    //logging: false,
+  host: 'localhost',
+  dialect: 'mysql',
 });
 
 
 db.authenticate()
-.then(() => {
-  console.log('Its alive!!!!');
-})
-.catch(err => {
-  console.log('No se conecto :(')
-})
-exports.default = db;
+  .then(() => {
+    console.log('DB Conectada');
+  })
+  .catch(err => {
+    console.log('Error en la conexión con DB')
+  })
 
-//# sourceMappingURL=conection.js.map
+
+exports.default = db;
