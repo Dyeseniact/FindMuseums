@@ -4,7 +4,7 @@ module.exports = function (req, res, next) {
 
     // Leer el toquen del header
     const token = req.header('x-auth-token');
-    console.log(token)
+    
     // Revisar si no hay token
     if (!token) {
         return res.status(401).json({
@@ -15,6 +15,8 @@ module.exports = function (req, res, next) {
     try {
         const encryption = jwt.verify(token, process.env.SECRETA);
         req.user = encryption.user;
+
+        //console.log(req.user.id)
         next();
 
     } catch (error) {

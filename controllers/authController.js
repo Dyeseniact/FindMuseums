@@ -34,7 +34,7 @@ exports.authenticateUser = async (req, res) => {
             where: {
                 email: email
             }
-        });
+        });        
 
         if (!user) {
             return res.status(400).json({
@@ -52,7 +52,8 @@ exports.authenticateUser = async (req, res) => {
         // Crear y firmar el JWT
         const payload = {
             user: {
-                id: user.id
+                id: user.id,
+                userName: user.fullName
             }
         };
 

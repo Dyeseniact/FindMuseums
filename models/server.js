@@ -2,6 +2,7 @@ const express = require("express");
 const user = require("../routes/users");
 const auth = require("../routes/auth");
 const service = require ("../routes/services");
+const museum = require ("../routes/museums");
 const cors = require("cors");
 const conection = require("../config/db");
 
@@ -12,7 +13,8 @@ class Server {
         this.apiPath = {
             users: '/api/users',
             auth: '/api/auth',
-            service: '/api/services'        
+            service: '/api/services',
+            museum: '/api/museums'       
          }
 
 
@@ -42,7 +44,9 @@ class Server {
     routes() {        
         this.app.use(this.apiPath.users, user);
         this.app.use(this.apiPath.auth, auth);   
-        this.app.use(this.apiPath.service, service);     
+        this.app.use(this.apiPath.service, service);
+        this.app.use(this.apiPath.museum, museum);
+        
     }
     
     listen() {
