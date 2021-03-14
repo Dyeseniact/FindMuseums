@@ -18,6 +18,9 @@ const User = conection_1.default.define('user', {
     },
     status: {
         type: sequelize_1.DataTypes.NUMBER
+    },
+    foto: {
+        type: sequelize_1.DataTypes.STRING
     }
 });
 
