@@ -1,4 +1,4 @@
-const Usuario = require("../models/Users");
+const User = require("../models/Users");
 const bcryptjs = require('bcryptjs');
 const {
     validationResult
@@ -7,48 +7,56 @@ const jwt = require('jsonwebtoken');
 const {
     json
 } = require('express');
-exports.autenticarUsuario = async (req, res) => {
 
-    //revisar si hay errores
+exports.authenticateUser = async (req, res) => {
 
-    const errores = validationResult(req);
+    // Revisar si hay errores
 
-    if (!errores.isEmpty()) {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
         return res.status(400).json({
-            errores: errores.array()
+            errors: errors.array()
         })
     }
 
 
 
-    //extraer el email y el password
+    // Extraer email y password
     const {
         email,
         password
     } = req.body;
 
     try {
-        //revisar que sea un usuario registrado
-        let usuario = await Usuario.default.findOne({ where: { email: email } });
-        if (!usuario) {
+        //Revisar que el usuario registrado sea único
+        let user = await User.default.findOne({
+            where: {
+                email: email
+            }
+        });
+
+        if (!user) {
             return res.status(400).json({
                 msg: "El usuario noexiste"
             });
         }
-        //revisar el password
-        const passCorrecto = await bcryptjs.compare(password, usuario.password);
-        if (!passCorrecto) {
+
+        // Revisa el password
+        const correctPass = await bcryptjs.compare(password, user.password);
+        if (!correctPass) {
             return res.status(400).json({
                 msg: "Password incorrecto"
             });
         }
-        //firma del jwt
+        // Crear y firmar el JWT
         const payload = {
-            usuario: {
-                id: usuario.id
+            user: {
+                id: user.id
             }
         };
-        //firmar el jwt
+
+        // Firmar el JWT
         jwt.sign(payload, process.env.SECRETA, {
             expiresIn: 3600000
         }, (error, token) => {

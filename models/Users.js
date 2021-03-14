@@ -1,6 +1,6 @@
 const sequelize_1 = require("sequelize");
 const conection_1 = require("../config/db");
-const Usuario = conection_1.default.define('user', {
+const User = conection_1.default.define('user', {
     fullName: {
         type: sequelize_1.DataTypes.STRING
     },
@@ -20,5 +20,5 @@ const Usuario = conection_1.default.define('user', {
         type: sequelize_1.DataTypes.NUMBER
     }
 });
-exports.default = Usuario;
-//# sourceMappingURL=Usuario.js.map
+
+exports.default = User;

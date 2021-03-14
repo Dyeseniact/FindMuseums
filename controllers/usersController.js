@@ -2,35 +2,36 @@ const {
     Request,
     Response
 } = require("express");
-const Usuario = require("../models/Users");
+const User = require("../models/Users");
 
 const bcryptjs = require('bcryptjs');
+
 const {
     validationResult
 } = require('express-validator');
 const jwt = require('jsonwebtoken');
 
-const getUsuarios = async (req, res) => {
-    const usuarios = await Usuario.default.findAll({
+const getUsers = async (req, res) => {
+    const users = await User.default.findAll({
         where: {
             status: [1, 2]
         }
     });
 
-    res.json(usuarios);
+    res.json(users);
 }
 
 
 
-const getUsuario = async (req, res) => {
+const getUser = async (req, res) => {
 
     const {
         id
     } = req.params;
-    const usuario = await Usuario.default.findByPk(id);
+    const user = await User.default.findByPk(id);
 
-    if (usuario) {
-        res.json(usuario)
+    if (user) {
+        res.json(user)
     } else {
         res.status(404).json({
             msg: `No existe un usuario con el id: ${id}`
@@ -39,7 +40,7 @@ const getUsuario = async (req, res) => {
 
 }
 
-const postUsuario = async (req, res) => {
+const postUser = async (req, res) => {
 
     const {
         body
@@ -49,40 +50,42 @@ const postUsuario = async (req, res) => {
         email,
         password
     } = req.body;
+
     try {
 
-        const project = await Usuario.default.findOne({ where: { email: email } });
+        const project = await User.default.findOne({
+            where: {
+                email: email
+            }
+        });
         if (project) {
             return res.status(400).json({
                 msg: 'El usuario ya existe'
             });
-            
-          } else {
-            //console.log(project instanceof Project); // true
-            //console.log(project.title); // 'My Title'
-          //crear el nuevo usuario
-        //hashear el password
-        const salt = await bcryptjs.genSalt(10);
-        body.password = await bcryptjs.hash(password, salt);        
-        //guardar usuario
-        const user = await Usuario.default.create(body);
-        //firma del jwt
-        const payload = {
-            usuario: {
-                id: user.id
-            }        
-        };
-        //firmar el jwt
-         jwt.sign(payload, process.env.SECRETA, {
-             expiresIn: 3600000
-         }, (error, token) => {
-             if(error) throw error;
 
-             res.json({
-                user,
-                token
-             });
-         });
+        } else {
+            // Hashear el password
+            const salt = await bcryptjs.genSalt(10);
+            body.password = await bcryptjs.hash(password, salt);
+            // Guardar usuario
+            const user = await User.default.create(body);
+            // Crear y firmar el JWT
+            const payload = {
+                user: {
+                    id: user.id
+                }
+            };
+            //Firmar del JWT
+            jwt.sign(payload, process.env.SECRETA, {
+                expiresIn: 3600000
+            }, (error, token) => {
+                if (error) throw error;
+
+                res.json({
+                    user,
+                    token
+                });
+            });
         }
     } catch (error) {
         console.log(error);
@@ -94,7 +97,7 @@ const postUsuario = async (req, res) => {
 
 
 
-const putUsuario = async (req, res) => {
+const putUser = async (req, res) => {
 
     const {
         id
@@ -104,15 +107,15 @@ const putUsuario = async (req, res) => {
     } = req;
     try {
 
-        const usuario = await Usuario.default.findByPk(id);
-        if (!usuario) {
+        const user = await User.default.findByPk(id);
+        if (!user) {
             return res.status(404).json({
                 msg: 'No existe un usuario con el id: ' + id
             })
         }
-        await usuario.update(body);
+        await user.update(body);
 
-        res.json(usuario);
+        res.json(user);
 
     } catch (error) {
         console.log(error);
@@ -123,23 +126,23 @@ const putUsuario = async (req, res) => {
 }
 
 
-const deleteUsuario = async (req, res) => {
+const deleteUser = async (req, res) => {
     const {
         id
     } = req.params;
     try {
 
-        const usuario = await Usuario.default.findByPk(id);
-        if (!usuario) {
+        const user = await User.default.findByPk(id);
+        if (!user) {
             return res.status(404).json({
                 msg: 'No existe un usuario con el id: ' + id
             })
         }
-        await usuario.update({
+        await user.update({
             status: 0
         });
 
-        res.json(usuario);
+        res.json(user);
 
     } catch (error) {
         console.log(error);
@@ -151,9 +154,9 @@ const deleteUsuario = async (req, res) => {
 
 
 module.exports = {
-    getUsuarios,
-    getUsuario,
-    postUsuario,
-    putUsuario,
-    deleteUsuario
+    getUser,
+    getUser,
+    postUser,
+    putUser,
+    deleteUser
 }
