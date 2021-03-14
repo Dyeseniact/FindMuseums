@@ -10,7 +10,7 @@ router.get('/', (req, res)=>{
 
 
 router.use('/services', require('./services'));
-router.use('/visitor', require('./visitor'));
+router.use('/visitor', require('./users'));
 router.use('/museums', require('./museums'));
 
 
