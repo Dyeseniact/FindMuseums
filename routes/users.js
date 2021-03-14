@@ -7,20 +7,21 @@ const {
 
 const {
     deleteUser,
-    getUser,
-    getUser,
+    getUsers,
+    getUserByID,
     postUser,
     putUser
 } = require('../controllers/usersController');
 
 
 router.get('/',
-    getUser
+    getUsers
+
 )
 
 
 router.get('/:id',
-    getUser
+    getUserByID
 );
 router.post('/',
     [

@@ -23,7 +23,7 @@ const getUsers = async (req, res) => {
 
 
 
-const getUser = async (req, res) => {
+const getUserByID = async (req, res) => {
 
     const {
         id
@@ -154,8 +154,8 @@ const deleteUser = async (req, res) => {
 
 
 module.exports = {
-    getUser,
-    getUser,
+    getUsers,
+    getUserByID,
     postUser,
     putUser,
     deleteUser
