@@ -5,11 +5,15 @@ const cors = require("cors");
 const conection = require("../config/db");
 
 class Server {
-    apiPath = {
-        users: '/api/users',
-        auth: '/api/auth',        
-    }
+    
     constructor() {
+
+        this.apiPath = {
+            users: '/api/users',
+            auth: '/api/auth',        
+         }
+
+
         this.app = express();
         this.port = process.env.PORT || '3000';
 
