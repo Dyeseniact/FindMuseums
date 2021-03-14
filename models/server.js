@@ -5,13 +5,13 @@ const cors = require("cors");
 const conection = require("../config/db");
 
 class Server {
-    apiPath = {
-        users: '/api/users',
-        auth: '/api/auth',        
-    }
+    //apiPath = {
+        //users: '/api/users',
+        //auth: '/api/auth'
+    //}
     constructor() {
         this.app = express();
-        this.port = process.env.PORT || '3000';
+        this.port = process.env.PORT || '3010';
 
         //metodos iniciales
         //this.dbConection();
@@ -34,8 +34,8 @@ class Server {
     }
 
     routes() {        
-        this.app.use(this.apiPath.users, user);
-        this.app.use(this.apiPath.auth, auth);        
+        //this.app.use(this.apiPath.users, user);
+        //this.app.use(this.apiPath.auth, auth);        
     }
     
     listen() {

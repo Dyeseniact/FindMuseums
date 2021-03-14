@@ -6,36 +6,152 @@
 // importamos el modelo de museums
 const Museum = require('../models/Museum')
 
-function createMuseum(req, res) {
-  // Instanciaremos un nuevo museum utilizando la clase museum
-  var museum = new Museum(req.body)
-  res.status(201).send(museum)
+const bcryptjs = require('bcryptjs');
+const { validationResult } = require('express-validator');
+const jwt = require('jsonwebtoken');
+
+const getMuseums = async (req, res) => {
+  const Museums = await Museum.default.findAll({
+      where: {
+          status: [2]
+      }
+  });
+
+  res.json(museums);
 }
 
-function getMuseums(req, res) {
-  // Simulando dos museums y respondiendolos
-  var museum1 = new Museum('Moneda', 'Peralvillo No. 24', 5547512454, '10:00', 2, 'monedamuseo@gmail.com')
-  var museum2 = new Museum('Medicina', 'Centro', 5500000000, '09:00', 3, 'medicinamuseo@gmail.com')
-  res.send([museum1, museum2])
+
+
+const getMuseum = async (req, res) => {
+
+  const {
+      id
+  } = req.params;
+  const museum = await Museum.default.findByPk(id);
+
+  if (museum) {
+      res.json(museum)
+  } else {
+      res.status(404).json({
+          msg: `No existe un museum con el id: ${id}`
+      })
+  }
+
 }
 
-function editMuseum(req, res) {
-  // simulando un museum previamente existente que el cliente modifica
-  var museum1 = new Museum(req.params.id,'Moneda', 'Peralvillo No. 24', 5547512454, '10:00', 'monedamuseo@gmail.com')
-  var modificaciones = req.body
-  museum1 = { ...museum1, ...modificaciones }
-  res.send(museum1)
+const postMuseum = async (req, res) => {
+
+  const {
+      body
+  } = req;
+
+  const {
+      email,
+      password
+  } = req.body;
+  try {
+
+      const project = await Museum.default.findOne({ where: { email: email } });
+      if (project) {
+          return res.status(400).json({
+              msg: 'El museum ya existe'
+          });
+          
+        } else {
+        //crear el nuevo museum
+      //hashear el password
+      const salt = await bcryptjs.genSalt(10);
+      body.password = await bcryptjs.hash(password, salt);        
+      //guardar museum
+      const user = await Museum.default.create(body);
+      //firma del jwt
+      const payload = {
+          museum: {
+              id: user.id
+          }        
+      };
+      //firmar el jwt
+       jwt.sign(payload, process.env.SECRETA, {
+           expiresIn: 3600000
+       }, (error, token) => {
+           if(error) throw error;
+
+           res.json({
+              user,
+              token
+           });
+       });
+      }
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({
+          msg: `Favor de comunicarse con el arministrador`
+      });
+  }
 }
 
-function deleteMuseum(req, res) {
-  // se simula una eliminación de museum, regresando un 200
-  res.status(200).send(`Museum ${req.params.id} eliminado`);
+
+
+const putMuseum = async (req, res) => {
+
+  const {
+      id
+  } = req.params;
+  const {
+      body
+  } = req;
+  try {
+
+      const museum = await Museum.default.findByPk(id);
+      if (!museum) {
+          return res.status(404).json({
+              msg: 'No existe un museum con el id: ' + id
+          })
+      }
+      await museum.update(body);
+
+      res.json(museum);
+
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({
+          msg: `Favor de comunicarse con el arministrador`
+      })
+  }
 }
 
-// exportamos las funciones definidas
+
+const deleteMuseum = async (req, res) => {
+  const {
+      id
+  } = req.params;
+  try {
+
+      const museum = await Museum.default.findByPk(id);
+      if (!museum) {
+          return res.status(404).json({
+              msg: 'No existe un museum con el id: ' + id
+          })
+      }
+      await museum.update({
+          status: 0
+      });
+
+      res.json(museum);
+
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({
+          msg: `Favor de comunicarse con el arministrador`
+      })
+  }
+}
+
+
 module.exports = {
-  createMuseum,
   getMuseums,
-  editMuseum,
+  getMuseum,
+  postMuseum,
+  putMuseum,
   deleteMuseum
 }
