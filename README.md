@@ -40,43 +40,21 @@ Hace referencia a los museos disponibles para realizar una reservación de servi
 
 
 ### Tablas y atributos:
+#### Tablas
+![](img/ShowTables.png)
+
 #### users
-* id
-* fullname
-* email
-* foto
-* password
-* address
-* phoneNumber
-* status
-* createdAt
-* updateAt
+![](img/userTable.png)
 
 #### services
-* id
-* description
-* status
-* createdAt
-* updatedAt
+![](img/servicesTable.png)
 
 #### museumService
-* id
-* idMuseum
-* idService
-* price
-* limitVisitors
-* timeService
-* status
-* createdAt
-* updatedAt
+![](img/museumServicesTable.png)
+
 
 #### tickets
-* id
-* idVisitor
-* idMuseumService
-* status
-* createdAt
-* updatedAt
+![](img/ticketTable.png)
 
 
 ## Construido con 🛠️
