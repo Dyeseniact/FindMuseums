@@ -1,8 +1,8 @@
-// importamos el modelo de tickets
+// Importamos el modelo de tickets
 const Ticket = require('../models/Ticket')
 
 function createTicket(req, res) {
-  // Instanciaremos un nuevo ticket utilizando la clase Ticket
+  // Instanciamos un nuevo ticket utilizando la clase Ticket
   var ticket = new Ticket(req.body)
   res.status(201).send(ticket)
 }
@@ -15,7 +15,7 @@ function getTicket(req, res) {
 }
 
 function editTicket(req, res) {
-  // simulando un ticet previamente existente que el cliente modifica
+  // Simulando un ticKet previamente existente que el cliente modifica
   var ticket1 = new Ticket(req.params.id, 2, 2, 2, 20.5, '2021-02-28', '09:00')
   var modificaciones = req.body
   ticket1 = { ...ticket1, ...modificaciones }
@@ -23,7 +23,7 @@ function editTicket(req, res) {
 }
 
 function deleteTicket(req, res) {
-  // se simula una eliminación de ticket, regresando un 200
+  // Se simula una eliminación de ticket, regresando un 200
   res.status(200).send(`Ticket ${req.params.id} eliminado`);
 }
 
