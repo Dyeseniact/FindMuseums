@@ -28,12 +28,12 @@ const getTicketsByUser = async (req, res) => {
       if (visitorTickets.length > 0) {
         res.json(visitorTickets);
       } else {
-        return res.status(404).json({
+        return res.status(400).json({
           msg: `El museo: '${visitor.userName}' No tiene ningun tickt disponible`
         });
       }
     } else {
-      return res.status(404).json({
+      return res.status(400).json({
         msg: `Esta peticion solo puede ser realizada por usuaios`
       });
     }
@@ -64,12 +64,12 @@ const getTicketUserByid = async (req, res) => {
       if (visitorTickets.length > 0) {
         res.json(visitorTickets);
       } else {
-        return res.status(404).json({
+        return res.status(400).json({
           msg: `El usuario: '${visitor.userName}' no tiene ningun tickt disponible para el id ${id}`
         });
       }
     } else {
-      return res.status(404).json({
+      return res.status(400).json({
         msg: `Esta peticion solo puede ser realizada por usuaios`
       });
     }
@@ -135,7 +135,7 @@ const calncelTicketByUser = async (req, res) => {
       });
       
       if (!visitorTicket) {
-        return res.status(404).json({
+        return res.status(400).json({
           msg: `No existe un ticket con el id: ${id} disponible Para el usuario: '${visitor.userName}'`
         });
       }
@@ -169,12 +169,12 @@ const getTicketsByMusseum = async (req, res) => {
       if (musseunTickets.length > 0) {
         res.json(musseunTickets);
       } else {
-        return res.status(404).json({
-          msg: `El museo: '${musseun.userName}' No tiene ningun tickt disponible`
+        return res.status(400).json({
+          msg: `El museo: '${musseun.userName}' No tiene ningun ticket disponible`
         });
       }
     } else {
-      return res.status(404).json({
+      return res.status(400).json({
         msg: `Esta peticion solo puede ser realizada por museos`
       });
     }
@@ -254,12 +254,12 @@ const getTicketMusseumByid = async (req, res) => {
       if (musseunTicket.length > 0) {
         res.json(musseunTicket);
       } else {
-        return res.status(404).json({
+        return res.status(400).json({
           msg: `El museo: '${musseun.userName}' no tiene ningun tickt disponible para el id ${id}`
         });
       }
     } else {
-      return res.status(404).json({
+      return res.status(400).json({
         msg: `Esta peticion solo puede ser realizada por museos`
       });
     }
@@ -279,7 +279,7 @@ function getIdByToken(req, res) {
     const encryption = jwt.verify(token, process.env.SECRETA);
     return req.user = encryption.user;
   } catch (error) {
-    return res.status(404).json({
+    return res.status(400).json({
       msg: `Token no valido`
     });
   }
