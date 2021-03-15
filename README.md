@@ -8,8 +8,8 @@ Reservaciones para Museos.
 Desarrollar  una API que facilite a los museos el control de las personas que ingresan a sus instalaciones por medio de reservaciones, al mismo tiempo que permita a los visitantes reservar su recorrido dependiendo del horario y límite de personas establecido por los museos.
 ### Tipos de usuario
 Personas que quieran reservar un recorrido en un museo y los museos que quieran tener un control sobre sus visitantes para no exceder el número de personas. Los cuales definimos como:
-* Usuarios
-* Museos
+* Usuario Visitante
+* Usuario Museo
 
 ### Historias de usuario:
 1. Como usuario visitante, quiero reservar un recorrido de museo
@@ -22,8 +22,26 @@ Personas que quieran reservar un recorrido en un museo y los museos que quieran 
 8. Como usuario museo, quiero tener un registro de las personas que ingresan a los recorridos. 
 9. Como usuario museo, quiero definir el precio, límite de visitantes y servicios que ofrezco. 
 
+### Información que necesitamos
+Necesitaremos información sobre:
+* Los museos que se registran
+* Los servicios que ofrece cada museo
+* Límite de visitas por día
+* Precio de los recorridos
 
-### Acciones de cada usuario
+### Principales entidades
+* Usuario visitante
+* Usuario museo
+* Servicios
+* Tickets
+
+### Caracteristicas de las entidades
+* Usuario visitante : id, nombre completo, email, foto, contraseña, dirección, teléfono, estado y fecha de registro y actualización.
+* Usuario museo: id, idMuseo, idServicio, precio, limite de visitantes, tiempo del servicio, estado, fecha de registro y actualización. 
+* Servicios: id, descripción del servicio, estado, fecha de creación y actualización.
+* Tikecks: id, idUsuario, idMuseo, estado, fecha de creación y actualización.  
+
+### Funcionalidades de cada usuario
 #### Usuarios
 Hace referencia a los usuarios que desean realizar una reservación previa a algún museo. Este apartado deriva de usuarios, contiene un status de tipo 1 ,sus acciones son:
 * Registrar, visualizar, editar y eliminar perfil
