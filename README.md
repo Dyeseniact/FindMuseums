@@ -19,7 +19,7 @@ Personas que quieran reservar un recorrido en un museo y los museos que quieran 
 * Como usuario museo, quiero editar mi información
 * Como usuario visitante, quiero ver la lista de reservaciones
 * Como usuario museo, quiero crear, editar, listar y eliminar un servicio
-* Como usuario museo, quiero tener un registro de la spersonas que ingresan a los recorridos. 
+* Como usuario museo, quiero tener un registro de las personas que ingresan a los recorridos. 
 * Como usuario museo, quiero definir el precio, límite de visitantes y servicios que ofrezco. 
 
 
