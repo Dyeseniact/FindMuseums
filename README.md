@@ -12,15 +12,15 @@ Personas que quieran reservar un recorrido en un museo y los museos que quieran 
 * Museos
 
 ### Historias de usuario:
-* Como usuario visitante, quiero reservar un recorrido de museo
-* Como usuario visitante, quiero ver la lista de museos 
-* Como usuario visitante, quiero ver la información de un museo
-* Como usuario visitante, quiero cancelar una reservación
-* Como usuario museo, quiero editar mi información
-* Como usuario visitante, quiero ver la lista de reservaciones
-* Como usuario museo, quiero crear, editar, listar y eliminar un servicio
-* Como usuario museo, quiero tener un registro de las personas que ingresan a los recorridos. 
-* Como usuario museo, quiero definir el precio, límite de visitantes y servicios que ofrezco. 
+1. Como usuario visitante, quiero reservar un recorrido de museo
+2. Como usuario visitante, quiero ver la lista de museos 
+3. Como usuario visitante, quiero ver la información de un museo
+4. Como usuario visitante, quiero cancelar una reservación
+5. Como usuario museo, quiero editar mi información
+6. Como usuario visitante, quiero ver la lista de reservaciones
+7. Como usuario museo, quiero crear, editar, listar y eliminar un servicio
+8. Como usuario museo, quiero tener un registro de las personas que ingresan a los recorridos. 
+9. Como usuario museo, quiero definir el precio, límite de visitantes y servicios que ofrezco. 
 
 
 ### Acciones de cada usuario
@@ -43,17 +43,17 @@ Hace referencia a los museos disponibles para realizar una reservación de servi
 #### Tablas
 ![](img/ShowTables.png)
 
-#### users
+#### Tabla users
 ![](img/userTable.png)
 
-#### services
+#### Tabla services
 ![](img/servicesTable.png)
 
-#### museumService
+#### Tabla museumService
 ![](img/museumServicesTable.png)
 
 
-#### tickets
+#### Tabla ticket
 ![](img/ticketTable.png)
 
 
