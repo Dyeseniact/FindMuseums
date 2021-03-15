@@ -29,16 +29,16 @@ router.get('/:id',
 router.post('/',
     aunt,
     [
-        check('idMuseum', 'El idMuseum es oblgatoria').not().isEmpty(),
-        check('idMuseum', 'idMuseum debe ser un numero').isNumeric(),
-        check('idService', 'El idService es oblgatoria').not().isEmpty(),
-        check('idService', 'idMuseum debe ser un numero').isNumeric(),
-        check('price', 'price es oblgatoria').not().isEmpty(),
-        check('price', 'price debe ser un numero').isFloat(),
-        check('limitVisitors', 'limitVisitors es oblgatoria').not().isEmpty(),
-        check('limitVisitors', 'limitVisitors debe ser un numero').isNumeric(),
-        check('timeService', 'timeService es oblgatoria').not().isEmpty(),
-        check('timeService', 'timeService debe ser un numero').isFloat()
+        check('idMuseum', 'El idMuseum es oblgatorio').not().isEmpty(),
+        check('idMuseum', 'El idMuseum debe ser un numero').isNumeric(),
+        check('idService', 'El idService es oblgatorio').not().isEmpty(),
+        check('idService', 'El idMuseum debe ser un número').isNumeric(),
+        check('price', 'El price es obligatorio').not().isEmpty(),
+        check('price', 'El price debe ser un numero').isFloat(),
+        check('limitVisitors', 'limitVisitors es oblgatorio').not().isEmpty(),
+        check('limitVisitors', 'limitVisitors debe ser un número').isNumeric(),
+        check('timeService', 'timeService es oblgatorio').not().isEmpty(),
+        check('timeService', 'timeService debe ser un número').isFloat()
     ],
     postMuseumServices
 );

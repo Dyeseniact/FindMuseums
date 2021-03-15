@@ -27,19 +27,19 @@ const getMuseumServices = async (req, res) => {
             if (museumService.length > 0) {
                 res.json(museumService);
             } else {
-                return res.status(404).json({
-                    msg: `El museo: '${idMusseum.userName}' no ceunta con servisios disponibles`
+                return res.status(400).json({
+                    msg: `El museo: '${idMusseum.userName}' no cuenta con servicios disponibles`
                 });
             }
         } else {
-            return res.status(404).json({
-                msg: `No existe Museo con el id: ${id}`
+            return res.status(400).json({
+                msg: `No existe el museo con el id: ${id}`
             });
         }
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: `Favor de comunicarse con el administrador`
+            msg: `Error favor de comunicarse con el administrador`
         });
     }
 
@@ -62,13 +62,13 @@ const getMuseumServiceByID = async (req, res) => {
             if (museumService.length > 0) {
                 res.json(museumService);
             } else {
-                return res.status(404).json({
+                return res.status(400).json({
                     msg: `No existe un servicio con el id: ${id} para el museo: '${idMusseum.userName}'`
                 });
             }
         } else {
-            return res.status(404).json({
-                msg: `No existe Museo con el id: ${id}`
+            return res.status(400).json({
+                msg: `No existe el museo con el id: ${id}`
             });
         }
     } catch (error) {
@@ -117,7 +117,7 @@ const postMuseumServices = async (req, res) => {
                     service
                 });
             } else {
-                res.status(300).json({
+                res.status(403).json({
                     msg: `No cuentas con los permisos de esa cuenta`
                 });
             }
@@ -153,8 +153,8 @@ const putMuseumServices = async (req, res) => {
                 }
             });
             if (!service) {
-                return res.status(404).json({
-                    msg: `No existe un service con el id: ${id} disponible Para el museo: '${idMusseum.userName}'`
+                return res.status(400).json({
+                    msg: `No existe un servicio con el id: ${id} disponible para el museo: '${idMusseum.userName}'`
                 });
             }
             if (body.idService) {
@@ -201,8 +201,8 @@ const deleteMuseumServices = async (req, res) => {
             }
         });
         if (!service) {
-            return res.status(404).json({
-                msg: `No existe un service con el id: ${id} disponible Para el museo: '${idMusseum.userName}'`
+            return res.status(400).json({
+                msg: `No existe un service con el id: ${id} disponible para el museo: '${idMusseum.userName}'`
             });
         }
         await service.update({
@@ -224,8 +224,8 @@ function getIdByToken(req, res) {
         const encryption = jwt.verify(token, process.env.SECRETA);
         return req.user = encryption.user;
     } catch (error) {
-        return res.status(404).json({
-            msg: `No existe Museo con el id: ${id}`
+        return res.status(400).json({
+            msg: `No existe el museo con el id: ${id}`
         });
     }
 }
