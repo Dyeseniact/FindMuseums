@@ -6,12 +6,12 @@ Reservaciones para museos
 Reservaciones para Museos.
 ### Objetivo principal
 Desarrollar  una API que facilite a los museos el control de las personas que ingresan a sus instalaciones por medio de reservaciones, al mismo tiempo que permita a los visitantes reservar su recorrido dependiendo del horario y límite de personas establecido por los museos.
-### Tipos de usuario
+### Tipos de usuario 
 Personas que quieran reservar un recorrido en un museo y los museos que quieran tener un control sobre sus visitantes para no exceder el número de personas. Los cuales definimos como:
 * Usuario Visitante
 * Usuario Museo
 
-### Historias de usuario:
+### Historias de usuario: :open_book:
 1. Como usuario visitante, quiero reservar un recorrido de museo
 2. Como usuario visitante, quiero ver la lista de museos 
 3. Como usuario visitante, quiero ver la información de un museo
@@ -100,7 +100,7 @@ Hace referencia a los museos disponibles para realizar una reservación de servi
 
 
 ## Integrantes
-### Equipo
+### Equipo :people_holding_hands:
 
 Número 20
 
