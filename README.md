@@ -141,6 +141,8 @@ Hace referencia a los museos disponibles para realizar una reservación de servi
 * nodemon 2.0.7
 * sequelize 6.5.0 
 
+### Link del video:
+https://www.canva.com/design/DAEYzPwO6MA/oVUF4NFg9P5FeLCOdNGsNQ/watch?utm_content=DAEYzPwO6MA&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton
 
 ## Integrantes
 ### Equipo 
