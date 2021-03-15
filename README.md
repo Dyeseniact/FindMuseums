@@ -1,7 +1,7 @@
 # PROYECTO BEDU
 Reservaciones para museos 
 
-## Especificaciones del proyecto 
+## Especificaciones del proyecto 📋
 ### Nombre del proyecto
 Reservaciones para Museos.
 ### Objetivo principal
@@ -76,6 +76,9 @@ Hace referencia a los museos disponibles para realizar una reservación de servi
 * createdAt
 * updatedAt
 
+
+## Construido con 🛠️
+
 ### Tecnologías utilizadas
 * Nombre: Node.js
   Version: 10.19.0
@@ -97,9 +100,11 @@ Hace referencia a los museos disponibles para realizar una reservación de servi
 * nodemon 2.0.7
 * sequelize 6.5.0 
 
-```
+
 ## Integrantes
-Equipo número 20
+### Equipo
+
+Número 20
 
 - Jorge Ivan Gutierrez Yañez
 - Diana Yesenia Campos Tenorio
