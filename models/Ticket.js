@@ -1,13 +1,15 @@
-class Ticket{
-	constructor(idTicket, idVisitor, idService, idMuseum, price, date, time) {
-		this.idTicket = idTicket;
-		this.idVisitor = idVisitor;
-		this.idService = idService;
-		this.idMuseum = idMuseum;
-		this.price = price;
-		this.date = date;
-		this.time = time;
-		
-	}
-}
-module.exports = Ticket;
+const sequelize = require("sequelize");
+const conection = require("../config/db");
+const Ticket = conection.default.define('ticket', {
+    idVisitor: {
+        type: sequelize.DataTypes.NUMBER
+    },
+    idMuseumService: {
+        type: sequelize.DataTypes.NUMBER
+    },     
+    status: {
+        type: sequelize.DataTypes.NUMBER
+    }    
+});
+
+exports.default = Ticket;
