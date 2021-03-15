@@ -11,7 +11,7 @@ Personas que quieran reservar un recorrido en un museo y los museos que quieran 
 * Usuario Visitante
 * Usuario Museo
 
-### Historias de usuario: :open_book:
+### Historias de usuario: 
 1. Como usuario visitante, quiero reservar un recorrido de museo
 2. Como usuario visitante, quiero ver la lista de museos 
 3. Como usuario visitante, quiero ver la información de un museo
@@ -42,13 +42,16 @@ Necesitaremos información sobre:
 * Tikecks: id, idUsuario, idMuseo, estado, fecha de creación y actualización.  
 
 ### Funcionalidades de cada usuario
+
 #### Usuarios
 Hace referencia a los usuarios que desean realizar una reservación previa a algún museo. Este apartado deriva de usuarios, contiene un status de tipo 1 ,sus acciones son:
+
 * Registrar, visualizar, editar y eliminar perfil
 * Consultar y eliminar perfil
 * Crear, cancelar y editar reservación
 * Visualizar museos
 * Visualizar ticket de reservación
+
 #### Museos
 Hace referencia a los museos disponibles para realizar una reservación de servicio o recorrido. Este apartado deriva de usuarios, contiene un status de tipo 2, sus acciones son:
 * Autenticación
@@ -61,17 +64,57 @@ Hace referencia a los museos disponibles para realizar una reservación de servi
 #### Tablas
 ![](img/ShowTables.png)
 
+
 #### Tabla users
+
+* id
+* fullname
+* email
+* photo
+* password
+* address
+* phoneNumber
+* status
+* createdAt
+* updateAt
+* teléfono 
+
 ![](img/userTable.png)
 
 #### Tabla services
+
+* id
+* description
+* status
+* createdAt
+* updatedAt
+
 ![](img/servicesTable.png)
 
 #### Tabla museumService
+
+* id
+* idMuseum 
+* idService
+* price
+* limitVisitors
+* timeService
+* status
+* createdAt
+* updatedAt
+
 ![](img/museumServicesTable.png)
 
 
 #### Tabla ticket
+
+* id
+* idVisitor
+* idMuseumService
+* status
+* createdAt
+* updatedAt
+
 ![](img/ticketTable.png)
 
 
@@ -100,7 +143,7 @@ Hace referencia a los museos disponibles para realizar una reservación de servi
 
 
 ## Integrantes
-### Equipo :people_holding_hands:
+### Equipo 
 
 Número 20
 
