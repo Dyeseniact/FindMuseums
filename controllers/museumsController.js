@@ -19,7 +19,7 @@ const getMuseumServices = async (req, res) => {
 
     const idMusseum = await getIdByToken(req, res);
     try {
-        if (idMusseum.id > 0) {
+        if (idMusseum.status = 2) {
             const museumService = await conection.default.query('SELECT a.id, b.description, a.price, a.limitVisitors, a.timeService FROM museumServices AS a LEFT JOIN services AS b ON a.idService = b.id WHERE  a.idMuseum = ' + idMusseum.id + ' and a.status = 1;', {
                 type: QueryTypes.SELECT
             });
@@ -33,9 +33,9 @@ const getMuseumServices = async (req, res) => {
             }
         } else {
             return res.status(404).json({
-                msg: `No existe Museo con el id: ${id}`
+              msg: `Esta peticion solo puede ser realizada por museos`
             });
-        }
+          }
     } catch (error) {
         console.log(error);
         res.status(500).json({
@@ -54,7 +54,7 @@ const getMuseumServiceByID = async (req, res) => {
 
     const idMusseum = await getIdByToken(req, res);
     try {
-        if (idMusseum.id > 0) {
+        if (idMusseum.status = 2) {
             const museumService = await conection.default.query('SELECT a.id, b.description, a.price, a.limitVisitors, a.timeService FROM museumServices AS a LEFT JOIN services AS b ON a.idService = b.id WHERE  a.id = ' + id + ' and a.idMuseum = ' + idMusseum.id + ' and a.status = 1;', {
                 type: QueryTypes.SELECT
             });
@@ -68,7 +68,7 @@ const getMuseumServiceByID = async (req, res) => {
             }
         } else {
             return res.status(404).json({
-                msg: `No existe Museo con el id: ${id}`
+                msg: `Esta peticion solo puede ser realizada por museos`
             });
         }
     } catch (error) {
@@ -96,7 +96,7 @@ const postMuseumServices = async (req, res) => {
     const idMusseum = await getIdByToken(req, res);
 
     try {
-        if (idMusseum.id > 0) {
+        if (idMusseum.status = 2) {
             if (idMusseum.id == body.idMuseum) {
                 var service = await MuseumService.default.findOne({
                     where: {
@@ -117,8 +117,8 @@ const postMuseumServices = async (req, res) => {
                     service
                 });
             } else {
-                res.status(300).json({
-                    msg: `No cuentas con los permisos de esa cuenta`
+                return res.status(404).json({
+                    msg: `Esta peticion solo puede ser realizada por museos`
                 });
             }
         }
@@ -144,7 +144,7 @@ const putMuseumServices = async (req, res) => {
     const idMusseum = await getIdByToken(req, res);
     try {
 
-        if (idMusseum.id > 0) {
+        if (idMusseum.status = 2) {
             var service = await MuseumService.default.findOne({
                 where: {
                     id: id,
@@ -173,6 +173,11 @@ const putMuseumServices = async (req, res) => {
             }
             await service.update(body);
             res.json(service);
+        } else {
+            return res.status(404).json({
+                msg: `Esta peticion solo puede ser realizada por museos`
+            });
+            
         }
 
 
@@ -193,22 +198,29 @@ const deleteMuseumServices = async (req, res) => {
     const idMusseum = await getIdByToken(req, res);
     try {
 
-        var service = await MuseumService.default.findOne({
-            where: {
-                id: id,
-                idMuseum: idMusseum.id,
-                status: 1
-            }
-        });
-        if (!service) {
-            return res.status(404).json({
-                msg: `No existe un service con el id: ${id} disponible Para el museo: '${idMusseum.userName}'`
+        if(idMusseum.status = 2){
+            var service = await MuseumService.default.findOne({
+                where: {
+                    id: id,
+                    idMuseum: idMusseum.id,
+                    status: 1
+                }
             });
+            if (!service) {
+                return res.status(404).json({
+                    msg: `No existe un service con el id: ${id} disponible Para el museo: '${idMusseum.userName}'`
+                });
+            }
+            await service.update({
+                status: 0
+            });
+            res.json(service);
+        } else {
+            return res.status(404).json({
+                msg: `Esta peticion solo puede ser realizada por museos`
+            });
+            
         }
-        await service.update({
-            status: 0
-        });
-        res.json(service);
 
     } catch (error) {
         console.log(error);
@@ -225,11 +237,10 @@ function getIdByToken(req, res) {
         return req.user = encryption.user;
     } catch (error) {
         return res.status(404).json({
-            msg: `No existe Museo con el id: ${id}`
+            msg: `Token no valido`
         });
     }
 }
-
 module.exports = {
     getMuseumServices,
     getMuseumServiceByID,

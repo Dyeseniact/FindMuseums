@@ -3,6 +3,7 @@ const user = require("../routes/users");
 const auth = require("../routes/auth");
 const service = require ("../routes/services");
 const museum = require ("../routes/museums");
+const ticket = require ("../routes/ticket");
 const cors = require("cors");
 const conection = require("../config/db");
 
@@ -14,7 +15,8 @@ class Server {
             users: '/api/users',
             auth: '/api/auth',
             service: '/api/services',
-            museum: '/api/museums'       
+            museum: '/api/museums',
+            ticket: '/api/tickets'
          }
 
 
@@ -46,7 +48,7 @@ class Server {
         this.app.use(this.apiPath.auth, auth);   
         this.app.use(this.apiPath.service, service);
         this.app.use(this.apiPath.museum, museum);
-        
+        this.app.use(this.apiPath.ticket, ticket);
     }
     
     listen() {

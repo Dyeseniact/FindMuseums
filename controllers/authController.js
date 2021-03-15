@@ -53,7 +53,9 @@ exports.authenticateUser = async (req, res) => {
         const payload = {
             user: {
                 id: user.id,
-                userName: user.fullName
+                userName: user.fullName,                
+                status: user.status,
+                email: user.email
             }
         };
 
