@@ -142,7 +142,7 @@ Hace referencia a los museos disponibles para realizar una reservación de servi
 * sequelize 6.5.0 
 
 ### Link Swagger:
-https://app.swaggerhub.com/apis/trabucoaluca/museum-reservation/0.2#/Services/get_api_services__id_
+https://app.swaggerhub.com/apis-docs/trabucoaluca/museum-reservation/0.2
 
 ### Link del video:
 https://www.canva.com/design/DAEYzPwO6MA/oVUF4NFg9P5FeLCOdNGsNQ/watch?utm_content=DAEYzPwO6MA&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton
